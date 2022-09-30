@@ -1,4 +1,5 @@
-file(GLOB_RECURSE SOURCES ${LVGL_ROOT_DIR}/src/*.c)
+file(GLOB_RECURSE SOURCES ${LVGL_ROOT_DIR}/src/*.c
+${LVGL_ROOT_DIR}/demos/*.c)
 
 idf_build_get_property(LV_MICROPYTHON LV_MICROPYTHON)
 
@@ -9,6 +10,7 @@ if(LV_MICROPYTHON)
     INCLUDE_DIRS
     ${LVGL_ROOT_DIR}
     ${LVGL_ROOT_DIR}/src
+    ${LVGL_ROOT_DIR}/demos
     ${LVGL_ROOT_DIR}/../
     REQUIRES
     main)
@@ -22,7 +24,7 @@ if(LV_MICROPYTHON)
   endif()
 else()
   idf_component_register(SRCS ${SOURCES} INCLUDE_DIRS ${LVGL_ROOT_DIR}
-                         ${LVGL_ROOT_DIR}/src ${LVGL_ROOT_DIR}/../)
+                         ${LVGL_ROOT_DIR}/src ${LVGL_ROOT_DIR}/demos ${LVGL_ROOT_DIR}/../)
 
   target_compile_definitions(${COMPONENT_LIB} PUBLIC "-DLV_CONF_INCLUDE_SIMPLE")
 

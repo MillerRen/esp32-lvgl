@@ -1,4 +1,5 @@
 #include "lvgl_init.h"
+#include "demos/lv_demos.h"
 
 /******************************************************************
  *  STATIC PROTOTYPES
@@ -17,23 +18,7 @@ lv_obj_t * label_2;
 
 void UI_Init()
 {
-    lv_obj_t *scr = lv_scr_act(); //创建scr
-    lv_obj_set_pos(scr,0,0);
-    lv_scr_load(scr);
-
-    label_1 =lv_label_create(scr);//创建label
-    lv_label_set_recolor(label_1,1);//颜色可变换
-    lv_label_set_long_mode(label_1,LV_LABEL_LONG_SCROLL_CIRCULAR);//设置滚动模式
-    lv_obj_set_pos(label_1,10,10);//设置位置
-    lv_obj_set_size(label_1,160,30);//设定大小
-    lv_label_set_text(label_1, "This is a GUI thread yes");//设定文本内容
- 
-    label_2 =lv_label_create(scr);//创建labe2
-    lv_label_set_recolor(label_2,1);//颜色可变换
-    lv_label_set_long_mode(label_2,LV_LABEL_LONG_SCROLL_CIRCULAR);//设置滚动模式
-    lv_obj_set_pos(label_2,10,40);//设置位置
-    lv_obj_set_size(label_2,160,40);//设定大小
-    lv_label_set_text(label_2, "#ff0000 red#");//设定文本内容
+    lv_demo_music();
 
 }
 /*********************** GUI_SHOW_CODE_END***********************/
@@ -106,7 +91,7 @@ void guiTask(void *p)
     while (1) 
     {
         /* Delay 1 tick (assumes FreeRTOS tick is 10ms */
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(5));
         lv_task_handler();
     }
     /* A task should NEVER return */
