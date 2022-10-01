@@ -21,6 +21,6 @@ void app_main(void)
     /* Configure the peripheral according to the LED type */
     xTaskCreatePinnedToCore(guiTask, "gui", 4096*2, NULL, 1, NULL, 1);
     while (1) {
-        vTaskDelay(CONFIG_BLINK_PERIOD / portTICK_PERIOD_MS);
+        vTaskDelay(LV_TICK_PERIOD_MS);
     }
 }
