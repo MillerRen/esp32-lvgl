@@ -13,8 +13,6 @@ void lv_tick_task(void *arg)
  * If you wish to call *any* lvgl function from other threads/tasks
  * you should lock on the very same semaphore! */
 /*********************** GUI_SHOW_CODE_START***********************/
-lv_obj_t * label_1;
-lv_obj_t * label_2;
 
 void UI_Init()
 {
@@ -91,7 +89,7 @@ void guiTask(void *p)
     while (1) 
     {
         /* Delay 1 tick (assumes FreeRTOS tick is 10ms */
-        vTaskDelay(pdMS_TO_TICKS(5));
+        vTaskDelay(pdMS_TO_TICKS(10));
         lv_task_handler();
     }
     /* A task should NEVER return */
